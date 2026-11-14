@@ -103,6 +103,12 @@ infer_parental_genotype <- function(vcf_file,
     data[, paste0(hybrid, "_paternal")] <- dats$paternal[match(data$markerID, dats$Pos)]
   }
 
+  sample_cols <- 2:ncol(data)
+  valid_rows <- rowSums(!is.na(data[, sample_cols, drop = FALSE])) > 0
+  data <- data[valid_rows, ]
+
+  message("Filtering complete. Remaining valid markers: ", nrow(data))
+  
   message("Step 4: Saving results to ", output_file, "...")
   utils::write.table(data, file = output_file, quote = FALSE, sep = "\t", row.names = FALSE)
 
