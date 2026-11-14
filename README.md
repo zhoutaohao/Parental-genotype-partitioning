@@ -23,7 +23,7 @@ library(parentalgp)
 
 # Define the path to your VCF file
 # Note: Ensure the VCF contains multiple F1 hybrid samples and the FORMAT column includes "AD" (Allele Depth).
-vcf_path <- "path/to/your/hybrid_endosperm.vcf.gz"
+vcf_path <- "path/to/your/hybrid_endosperm.vcf"
 
 # Run the inference function
 result <- infer_parental_genotype(
